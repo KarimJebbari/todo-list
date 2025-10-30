@@ -47,25 +47,3 @@ npm start
 Then open your browser and visit:
 - http://localhost:3000
 
-## Project Structure
-
-src/
-├── components/
-│   ├── Header/          # App header with statistics
-│   ├── TodoForm/        # Task creation form
-│   ├── TodoList/        # Main tasks container
-│   ├── TodoItem/        # Individual task component
-│   ├── SearchBar/       # Search functionality
-│   └── FilterButtons/   # Task filtering
-│
-├── contexts/
-│   └── TodoContext.js   # State management
-│
-├── utils/
-│   ├── storage.js       # LocalStorage utilities
-│   ├── constants.js     # App constants
-│   └── helpers.js       # Helper functions
-│
-├── hooks/               # Custom React hooks
-├── App.js
-└── index.js
