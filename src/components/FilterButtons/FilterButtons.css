@@ -1,0 +1,357 @@
+.filter-buttons {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.95), 
+    rgba(248, 250, 252, 0.95));
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  animation: filterSlideIn 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes filterSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.filter-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid;
+  border-image: linear-gradient(90deg, 
+    transparent, 
+    #667eea, 
+    #764ba2, 
+    transparent) 1;
+}
+
+.filter-title-icon {
+  font-size: 1.4rem;
+  color: #667eea;
+  animation: filterIconFloat 3s ease-in-out infinite;
+}
+
+@keyframes filterIconFloat {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  33% { 
+    transform: translateY(-2px) rotate(-5deg); 
+  }
+  66% { 
+    transform: translateY(1px) rotate(5deg); 
+  }
+}
+
+.filter-title {
+  color: #1f2937;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.filter-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.filter-btn {
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(229, 231, 235, 0.8);
+  border-radius: 16px;
+  padding: 1.25rem 1rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.6), 
+    transparent);
+  transition: left 0.6s ease;
+}
+
+.filter-btn:hover::before {
+  left: 100%;
+}
+
+.filter-btn:hover {
+  border-color: #667eea;
+  transform: translateY(-3px);
+  box-shadow: 
+    0 8px 25px rgba(102, 126, 234, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 30px rgba(102, 126, 234, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+.filter-btn-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+  z-index: 2;
+}
+
+.filter-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover .filter-icon-wrapper {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.filter-btn.active .filter-icon-wrapper {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.filter-icon {
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:first-child .filter-icon {
+  color: #667eea;
+}
+
+.filter-btn:first-child:hover .filter-icon {
+  color: #5a67d8;
+  transform: scale(1.1);
+}
+
+.filter-btn:first-child.active .filter-icon {
+  color: white;
+  transform: scale(1.2);
+}
+.filter-btn:nth-child(2) .filter-icon {
+  color: #f59e0b;
+}
+
+.filter-btn:nth-child(2):hover .filter-icon {
+  color: #d97706;
+  transform: scale(1.1) rotate(15deg);
+}
+
+.filter-btn:nth-child(2).active .filter-icon {
+  color: white;
+  transform: scale(1.2) rotate(15deg);
+}
+.filter-btn:last-child .filter-icon {
+  color: #10b981;
+}
+
+.filter-btn:last-child:hover .filter-icon {
+  color: #059669;
+  transform: scale(1.1);
+}
+
+.filter-btn:last-child.active .filter-icon {
+  color: white;
+  transform: scale(1.2);
+}
+.filter-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.filter-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #374151;
+  transition: all 0.3s ease;
+}
+
+.filter-btn.active .filter-label {
+  color: white;
+}
+
+.filter-description {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.filter-btn.active .filter-description {
+  color: rgba(255, 255, 255, 0.9);
+}
+.active-indicator {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  animation: indicatorPulse 2s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+@keyframes indicatorPulse {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% { 
+    transform: scale(1.3);
+    opacity: 0.8;
+  }
+}
+@media (max-width: 768px) {
+  .filter-buttons {
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+  
+  .filter-header {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  .filter-title {
+    font-size: 1.2rem;
+  }
+  
+  .filter-title-icon {
+    font-size: 1.3rem;
+  }
+  
+  .filter-options {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .filter-btn {
+    padding: 1rem 0.75rem;
+  }
+  
+  .filter-btn-content {
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: flex-start;
+  }
+  
+  .filter-icon-wrapper {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  
+  .filter-icon {
+    font-size: 1.3rem;
+  }
+  
+  .filter-text {
+    align-items: flex-start;
+    flex: 1;
+  }
+  
+  .filter-label {
+    font-size: 0.95rem;
+  }
+  
+  .filter-description {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-buttons {
+    padding: 1rem;
+    border-radius: 14px;
+  }
+  
+  .filter-header {
+    gap: 0.5rem;
+  }
+  
+  .filter-title {
+    font-size: 1.1rem;
+  }
+  
+  .filter-title-icon {
+    font-size: 1.2rem;
+  }
+  
+  .filter-btn {
+    padding: 0.875rem 0.5rem;
+  }
+  
+  .filter-btn-content {
+    gap: 0.75rem;
+  }
+  
+  .filter-icon-wrapper {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+  
+  .filter-icon {
+    font-size: 1.2rem;
+  }
+  
+  .filter-label {
+    font-size: 0.9rem;
+  }
+  
+  .filter-description {
+    font-size: 0.65rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+.filter-btn:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+  border-radius: 4px;
+}

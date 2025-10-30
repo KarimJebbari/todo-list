@@ -1,0 +1,435 @@
+.todo-list {
+  margin-top: 2.5rem;
+  animation: slideInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.todo-list-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid;
+  border-image: linear-gradient(90deg, 
+    transparent, 
+    #667eea, 
+    #764ba2, 
+    #f093fb, 
+    transparent) 1;
+  position: relative;
+  animation: headerGlow 3s ease-in-out infinite;
+}
+
+@keyframes headerGlow {
+  0%, 100% {
+    border-image-source: linear-gradient(90deg, 
+      transparent, 
+      #667eea, 
+      #764ba2, 
+      transparent);
+  }
+  50% {
+    border-image-source: linear-gradient(90deg, 
+      transparent, 
+      #f093fb, 
+      #667eea, 
+      transparent);
+  }
+}
+
+.todo-list-header h2 {
+  color: #1f2937;
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* Header Icons */
+.header-icon {
+  font-size: 1.6rem;
+  transition: all 0.3s ease;
+}
+
+.all-icon {
+  color: #667eea;
+  animation: listPulse 2s ease-in-out infinite;
+}
+
+.active-icon {
+  color: #f59e0b;
+  animation: clockPulse 1.5s ease-in-out infinite;
+}
+
+.completed-icon {
+  color: #10b981;
+  animation: checkSpin 2s ease-in-out infinite;
+}
+
+.search-icon {
+  color: #8b5cf6;
+  animation: searchPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes listPulse {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.1) rotate(-5deg); }
+  75% { transform: scale(1.1) rotate(5deg); }
+}
+
+@keyframes clockPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+@keyframes checkSpin {
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.2) rotate(10deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes searchPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+.tasks-count {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-left: 0.5rem;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.todo-list-subtitle {
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin: 0.5rem 0 0 0;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  animation: subtitleSlide 0.6s ease-out 0.3s both;
+}
+
+.subtitle-icon {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  animation: subtitlePulse 2s ease-in-out infinite;
+}
+
+@keyframes subtitlePulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+@keyframes subtitleSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.todos-container {
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 0.75rem;
+  margin: 0 -0.25rem;
+}
+
+.todos-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.todos-container::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, 
+    rgba(102, 126, 234, 0.1), 
+    rgba(118, 75, 162, 0.1));
+  border-radius: 10px;
+  margin: 4px 0;
+}
+
+.todos-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, 
+    #667eea, 
+    #764ba2, 
+    #f093fb);
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.todos-container::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, 
+    #764ba2, 
+    #f093fb, 
+    #667eea);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, 
+    rgba(248, 250, 252, 0.9), 
+    rgba(240, 249, 255, 0.9));
+  border-radius: 20px;
+  border: 2px dashed;
+  border-image: linear-gradient(135deg, #667eea, #764ba2, #f093fb) 1;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  animation: emptyStatePulse 4s ease-in-out infinite;
+}
+
+@keyframes emptyStatePulse {
+  0%, 100% { 
+    border-image-source: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.15);
+  }
+  50% { 
+    border-image-source: linear-gradient(135deg, #f093fb, #667eea, #764ba2);
+    box-shadow: 0 12px 40px rgba(118, 75, 162, 0.2);
+  }
+}
+
+.empty-state::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, 
+    rgba(255, 255, 255, 0.8) 0%, 
+    transparent 70%);
+  animation: shimmer 6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Empty State Icons */
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  display: block;
+  animation: emptyIconFloat 3s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.all-empty-icon {
+  color: #667eea;
+}
+
+.active-empty-icon {
+  color: #f59e0b;
+  animation: activeEmpty 2s ease-in-out infinite;
+}
+
+.completed-empty-icon {
+  color: #10b981;
+  animation: celebration 2s ease-in-out infinite;
+}
+
+.search-empty-icon {
+  color: #8b5cf6;
+  animation: searchEmpty 2s ease-in-out infinite;
+}
+
+@keyframes emptyIconFloat {
+  0%, 100% { 
+    transform: translateY(0px) scale(1) rotate(0deg); 
+  }
+  33% { 
+    transform: translateY(-10px) scale(1.1) rotate(-5deg); 
+  }
+  66% { 
+    transform: translateY(5px) scale(1.05) rotate(5deg); 
+  }
+}
+
+@keyframes activeEmpty {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg); 
+    opacity: 1;
+  }
+  50% { 
+    transform: scale(1.2) rotate(10deg); 
+    opacity: 0.8;
+  }
+}
+
+@keyframes celebration {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg); 
+  }
+  25% { 
+    transform: scale(1.3) rotate(-10deg); 
+  }
+  75% { 
+    transform: scale(1.3) rotate(10deg); 
+  }
+}
+
+@keyframes searchEmpty {
+  0%, 100% { 
+    transform: scale(1) translateX(0); 
+  }
+  25% { 
+    transform: scale(1.2) translateX(-5px); 
+  }
+  75% { 
+    transform: scale(1.2) translateX(5px); 
+  }
+}
+
+.empty-state h3 {
+  color: #1f2937;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #6b7280;
+  font-weight: 500;
+  line-height: 1.6;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.todos-container {
+  animation: itemsSlideIn 0.6s ease-out;
+}
+
+@keyframes itemsSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .todo-list {
+    margin-top: 2rem;
+  }
+  
+  .todo-list-header {
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+  }
+  
+  .todo-list-header h2 {
+    font-size: 1.5rem;
+    gap: 0.5rem;
+  }
+  
+  .header-icon {
+    font-size: 1.4rem;
+  }
+  
+  .tasks-count {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.6rem;
+  }
+  
+  .todo-list-subtitle {
+    font-size: 0.9rem;
+    gap: 0.4rem;
+  }
+  
+  .todos-container {
+    max-height: 400px;
+    padding-right: 0.5rem;
+  }
+  
+  .empty-state {
+    padding: 3rem 1.5rem;
+    border-radius: 16px;
+  }
+  
+  .empty-icon {
+    font-size: 3.5rem;
+  }
+  
+  .empty-state h3 {
+    font-size: 1.3rem;
+  }
+  
+  .empty-state p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .todo-list-header h2 {
+    font-size: 1.3rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  
+  .empty-state {
+    padding: 2.5rem 1rem;
+  }
+  
+  .empty-icon {
+    font-size: 3rem;
+  }
+  
+  .empty-state h3 {
+    font-size: 1.2rem;
+  }
+  
+  .empty-state p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
