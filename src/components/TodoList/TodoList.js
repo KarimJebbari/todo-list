@@ -90,7 +90,7 @@ const TodoList = ({ todos, filteredTodos, onToggleTodo, onEditTodo, onDeleteTodo
     return `${todos.filter(t => !t.completed).length} tasks remaining`;
   };
 
-  if (filteredTodos.length === 0) {
+  if (!filteredTodos || filteredTodos.length === 0) {
     return (
       <div 
         className="empty-state" 
